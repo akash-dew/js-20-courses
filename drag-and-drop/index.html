@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="main-title">Kanban Board</h1>
+
+    <div class="drag-container">
+        <ul class="drag-list">
+            <li class="drag-column backlog-column">
+
+                <span class="header">
+                    <h1>Backlog</h1>
+                </span>
+
+
+                <div id="backlog-content">
+                    <ul class="drag-item-list custom-scroll" id="backlog-list" ondragover="allowDrop(event)" ondrop="drop(event)"  ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+                        
+                    </ul>
+                </div>
+
+
+                    <div class="add=btn-group">
+                        <div class="add-btn" onclick="showItemBox(0)">
+                            <span class="plus-sign">+</span>
+                            <span>Add Item</span>
+                        </div>
+                        <div class="add-btn solid" onclick="hideItemBox(0)">
+                            <span>Save Item</span>
+                        </div>
+
+                        <div class="add-container">
+                            <div class="add-item" contenteditable="true">
+
+                            </div>
+                        </div>
+                    </div>
+            </li>
+         
+            <li class="drag-column progress-column" >
+
+                <span class="header">
+                    <h1>Progress</h1>
+                </span>
+
+
+                <div id="progress-content">
+                    <ul class="drag-item-list custom-scroll" id="progress-list" ondragover="allowDrop(event)" ondrop="drop(event)"  ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" >
+                        
+                    </ul>
+                </div>
+
+
+                    <div class="add=btn-group">
+                        <div class="add-btn" onclick="showItemBox(1)">
+                            <span class="plus-sign">+</span>
+                            <span>Add Item</span>
+                        </div>
+                        <div class="add-btn solid" onclick="hideItemBox(1)">
+                            <span>Save Item</span>
+                        </div>
+
+                        <div class="add-container">
+                            <div class="add-item" contenteditable="true">
+
+                            </div>
+                        </div>
+                    </div>
+            </li>
+         
+
+            <li class="drag-column complete-column"  >
+
+                <span class="header">
+                    <h1>Completed</h1>
+                </span>
+
+
+                <div id="complete-content">
+                    <ul class="drag-item-list custom-scroll" id="complete-list" ondragover="allowDrop(event)" ondrop="drop(event)"   ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
+                         
+                    </ul>
+                </div>
+
+
+                    <div class="add=btn-group">
+                        <div class="add-btn" onclick="showItemBox(2)">
+                            <span class="plus-sign">+</span>
+                            <span>Add Item</span>
+                        </div>
+                        <div class="add-btn solid" onclick="hideItemBox(2)">
+                            <span>Save Item</span>
+                        </div>
+
+                        <div class="add-container">
+                            <div class="add-item" contenteditable="true">
+
+                            </div>
+                        </div>
+                    </div>
+            </li>
+         
+
+            <li class="drag-column on-hold-column" >
+
+                <span class="header">
+                    <h1>On-hold</h1>
+                </span>
+
+
+                <div id="on-hold-content">
+                    <ul class="drag-item-list custom-scroll" id="on-hold-list" ondragover="allowDrop(event)" ondrop="drop(event)"  ondragenter="dragEnter(event)" ondragleave="dragLeave(event)" >
+                        
+                    </ul>
+                </div>
+
+
+                    <div class="add=btn-group">
+                        <div class="add-btn" onclick="showItemBox(3)">
+                            <span class="plus-sign">+</span>
+                            <span>Add Item</span>
+                        </div>
+                        <div class="add-btn solid" onclick="hideItemBox(3)">
+                            <span>Save Item</span>
+                        </div>
+                        <div class="add-container">
+                            <div class="add-item" contenteditable="true">
+
+                            </div>
+                        </div>
+                    </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>

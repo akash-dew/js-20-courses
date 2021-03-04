@@ -31,12 +31,12 @@ let equationObject = {};
 const wrongFormat = [];
 
 // Time
-let timer;
-let timePlayed = 0;
-let baseTime = 0;
-let penaltyTime = 0;
-let finalTime = 0;
-let finalTimeDisplay = '0.0';
+// let timer;
+// let timePlayed = 0;
+// let baseTime = 0;
+// let penaltyTime = 0;
+// let finalTime = 0;
+// let finalTimeDisplay = '0.0';
 
 // Scroll
 let valueY = 0;
@@ -61,7 +61,7 @@ function createEquations() {
     secondNumber = getRandomInt(9);
     const equationValue = firstNumber * secondNumber;
     const equation = `${firstNumber} x ${secondNumber} = ${equationValue}`;
-    equationObject = { value: equation, evaluated: 'true' };
+    equationObject = { value: equation, evaluated: true };
     equationsArray.push(equationObject);
   }
   // Loop through for each wrong equation, mess with the equation results, push to array
@@ -74,10 +74,34 @@ function createEquations() {
     wrongFormat[2] = `${firstNumber + 1} x ${secondNumber} = ${equationValue}`;
     const formatChoice = getRandomInt(2);
     const equation = wrongFormat[formatChoice];
-    equationObject = { value: equation, evaluated: 'false' };
+    equationObject = { value: equation, evaluated: false };
     equationsArray.push(equationObject);
   }
   shuffle(equationsArray);
+  console.log(equationsArray)
+}
+
+// show gme page
+function showGamePage(){ 
+    countdownPage.hidden = true;
+    gamePage.hidden = false;
+ }
+
+function equationsToDOM (){
+
+
+  equationsArray.forEach((eq) => {
+    let div = document.createElement('div')
+    let h1 = document.createElement('h1')
+    div.classList.add('item');
+    h1.textContent = eq.value;
+
+    div.appendChild(h1);
+    itemContainer.appendChild(div);
+
+  })
+
+  
 }
  
 
@@ -100,8 +124,8 @@ function showCountdown(){
     splashPage.hidden = true;
     countdownPage.hidden = false;
     countdownStart();
-    createEquations();
-    createEquations();
+    populateGamePage()
+    setTimeout(showGamePage, 400);
 }
 
 
@@ -141,4 +165,121 @@ startForm.addEventListener('click', () => {
   })
 });
 
+
+
+
+// Dynamically adding correct/incorrect equations
+function populateGamePage() {
+  // Reset DOM, Set Blank Space Above
+  itemContainer.textContent = '';
+  // Spacer
+  const topSpacer = document.createElement('div');
+  topSpacer.classList.add('height-240');
+  // Selected Item
+  const selectedItem = document.createElement('div');
+  selectedItem.classList.add('selected-item');
+  // Append
+  itemContainer.append(topSpacer, selectedItem);
+
+  // Create Equations, Build Elements in DOM
+  createEquations();
+  equationsToDOM();
+
+  // Set Blank Space Below
+  const bottomSpacer = document.createElement('div');
+  bottomSpacer.classList.add('height-500');
+  itemContainer.appendChild(bottomSpacer);
+ 
+
+}
+
+let scrollYs = 0;
+// Scroll and Store use value
+function select(guessedTrue){
+  console.log(playerGuessArray)
+  if(playerGuessArray.length <= questionAmount){
+    scrollYs += 80;
+    itemContainer.scroll(0, scrollYs);
+    return guessedTrue ? playerGuessArray.push(true) : playerGuessArray.push(false) 
+  }else{
+    console.log(playerGuessArray.length +' hhhhhh'+ questionAmount)
+  }
+  
+}
+
+
+let timer;
+let time = 0;
+let penaltyTime = 0;
+let totalTime = 0;
+
+
+function timeStart(){
+  timer = setInterval(addTime, 100);
+  gamePage.removeEventListener('click', timeStart)
+}
+
+function addTime(){
+  time += 0.1;
+  if(playerGuessArray.length == questionAmount){
+    window.clearInterval(timer);
+    equationsArray.forEach((eq, index) => {
+       
+        if(eq.evaluated !== playerGuessArray[index]){
+          penaltyTime += 0.5;
+        }
+
+    });
+    totalTime = time + penaltyTime;
+    resulToDom();
+    // console.log(' time  ' + time + ' ---- panelty  ' + penaltyTime + '---- Totaltime  ' + totalTime)
+
+  }
+
+}
+
+
+function resulToDom(){
+   finalTimeEl.textContent =  totalTime.toFixed(1);
+   baseTimeEl.textContent = 'Base Time : ' + time.toFixed(1);
+   penaltyTimeEl.textContent = 'Penalty Time : ' + penaltyTime.toFixed(1);
+
+ 
+   setTimeout(() => {
+    playAgainBtn.hidden = false
+   }, 1500);
+  
+  showResultPage();
+}
+
+function showResultPage(){
+  gamePage.hidden = true
+  scorePage.hidden = false
+}
+
+function playAgain(){
+  gamePage.addEventListener('click', timeStart)
+  scorePage.hidden = true;
+  splashPage.hidden = false;
+  playAgainBtn.hidden = true;
+  
+  timer;
+  time = 0;
+  penaltyTime = 0;
+  totalTime = 0;
+  
+  questionAmount = 0;
+  playerGuessArray = [];
+  equationsArray = [];
+  scrollYs = 0;
+
+  itemContainer.textContent = '';
+
+  itemContainer.scrollTop = 0;
+
+}
+
+
+
 startForm.addEventListener('submit', selectQuestionAmount)
+gamePage.addEventListener('click', timeStart)
