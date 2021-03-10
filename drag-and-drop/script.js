@@ -144,16 +144,14 @@ function updateDOM() {
   })
   // Run getSavedColumns only once, Update Local Storage;
   updatedOnLoad = true;
-  updateSavedColumns()
+  updateSavedColumns();
 }
 
 function showItemBox(c){
   addBtns[c].style.display = 'none';
   addItemContainers[c].style.display = "flex";
   saveItemBtns[c].style.display = "flex";
-  
-
-
+  addItemContainers[c].children[0].innerText = '';
 }
 
 function hideItemBox(c){
@@ -166,6 +164,7 @@ function hideItemBox(c){
 
 function saveItemBox(a){
   let itemText = addItemContainers[a].children[0].innerText;
+  // console.log(itemText.length > 0)
   if(itemText.length > 0){
     let dummyArray = listArray[a]
     dummyArray.push(itemText);
