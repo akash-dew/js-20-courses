@@ -1,6 +1,7 @@
 let domElements = {
   accordion: document.querySelectorAll(".accordion"),
-  ansInput: document.getElementById('ans-input')
+  ansInput: document.getElementById('ans-input'),
+  formSec: document.getElementById('formSec')
 };
 
 
@@ -104,6 +105,10 @@ function displayQsns() {
 displayQsns();
 
 
+
+domElements.formSec.addEventListener('submit', (e) =>{
+  e.preventDefault()
+})
 
 
 // var about = document.querySelector('input[name=about]');
