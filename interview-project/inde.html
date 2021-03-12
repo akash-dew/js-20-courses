@@ -88,13 +88,13 @@
               <form class="row g-3" id="formSec">
                 <div class="col-md-12">
                   <label  class="form-label">Question</label>
-                  <input type="email" class="form-control" id="qsn">
+                  <input type="text" class="form-control" name="qsn" id="qsn" required>
                 </div>
                 <div class="col-md-12">
                   <label class="form-label">Answer</label>
-                  <input id="ans-input" type="text" hidden>
+                  <input id="ans-input" name="ans-input" type="text" hidden >
                   <div style="height: 200px; padding: 0 0 30px;">
-                    <div id="editor-container">
+                    <div id="editor-container" name="akash">
                     </div>
                   </div>
                 </div>
@@ -105,16 +105,16 @@
                   <div class="">
                     
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option2">
-                    <label class="form-check-label" for="gridRadios1">HTML</label>
+                    <input class="form-check-input" type="radio" name="catRadios" id="catRadios1" value="1">
+                    <label class="form-check-label" for="catRadios1">HTML</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                    <label class="form-check-label" for="gridRadios2">CSS</label>
+                    <input class="form-check-input" type="radio" name="catRadios" id="catRadios2" value="2">
+                    <label class="form-check-label" for="catRadios2">CSS</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option2">
-                    <label class="form-check-label" for="gridRadios3">Javascript</label>
+                    <input class="form-check-input" type="radio" name="catRadios" id="catRadios3" value="3">
+                    <label class="form-check-label" for="catRadios3">Javascript</label>
                   </div>
                 </div>
 
@@ -123,19 +123,22 @@
                   <label  class="form-label">Label</label>
 
                   <div class="">
+ 
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                    <label class="form-check-label" for="inlineCheckbox1">Beginner</label>
+                    <input class="form-check-input" type="radio" name="labelCheckbox" id="labelCheckbox1" value="1">
+                    <label class="form-check-label" for="labelCheckbox1">Beginner</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                    <label class="form-check-label" for="inlineCheckbox2">Intermediate</label>
+                    <input class="form-check-input" type="radio" name="labelCheckbox" id="labelCheckbox2" value="2">
+                    <label class="form-check-label" for="labelCheckbox2">Intermediate</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option2">
-                    <label class="form-check-label" for="inlineCheckbox3">Expert</label>
+                    <input class="form-check-input" type="radio" name="labelCheckbox" id="labelCheckbox3" value="3">
+                    <label class="form-check-label" for="labelCheckbox3">Expert</label>
                   </div>
+
+
                 </div>
 
                 </div>
@@ -146,6 +149,8 @@
 
                 <div class="col-12">
                   <button type="submit" class="btn btn-primary">Save</button>
+                   
+
                 </div>
           </form>
 
@@ -154,14 +159,42 @@
 </div>
   </div>
 
-    </div>
+</div>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
 
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAwvU3qpJ45bWDRoiCYfEGHNnrrAmTITXQ",
+    authDomain: "frontend-interview-76b50.firebaseapp.com",
+    databaseURL: "https://frontend-interview-76b50-default-rtdb.firebaseio.com",
+    projectId: "frontend-interview-76b50",
+    storageBucket: "frontend-interview-76b50.appspot.com",
+    messagingSenderId: "1015037671107",
+    appId: "1:1015037671107:web:e3bd4842d25a96645ad476"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+</script>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
         crossorigin="anonymous"></script>
+
+
+
+        
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
@@ -184,15 +217,24 @@
     <script type="text/javascript" src="script.js"></script>
     <style>
         :root {
-            font-size:16px;
+          font-size: 1rem;
         }
 
         body {
-
+        
             background-image: linear-gradient(to right top, #6d327c, #485DA6, #00a1ba, #00BF98, #36C486);
             background-size: cover;
             min-height: 100vh;
         }
+
+        .accordion-button .badge{
+          position: absolute;
+          left: 0;
+          top: -5px;
+          font-size: 10px;
+        }
+         
+
     </style>
 
 </body>
