@@ -14,8 +14,9 @@
 </head>
 
 <body>
-    <div class="p-4">
+    <div class="p-4 position-relative">
 
+      <button id="hardLoad" class="btn btn-link position-absolute top-0 end-0">Hard Load</button>
 
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
@@ -25,6 +26,7 @@
           <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Add Question</button>
         </li>
         
+       
       </ul>
       <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"> 
@@ -89,6 +91,8 @@
                 <div class="col-md-12">
                   <label  class="form-label">Question</label>
                   <input type="text" class="form-control" name="qsn" id="qsn" required>
+                  <div class="invalid-feedback">Example invalid form file feedback</div>
+
                 </div>
                 <div class="col-md-12">
                   <label class="form-label">Answer</label>
@@ -97,6 +101,8 @@
                     <div id="editor-container" name="akash">
                     </div>
                   </div>
+                  <div class="invalid-feedback">Example invalid form file feedback</div>
+
                 </div>
 
                 <div class="col-md-12">
@@ -105,17 +111,19 @@
                   <div class="">
                     
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="catRadios" id="catRadios1" value="1">
+                    <input class="form-check-input" type="radio" name="catRadios" id="catRadios1" value="html" required>
                     <label class="form-check-label" for="catRadios1">HTML</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="catRadios" id="catRadios2" value="2">
+                    <input class="form-check-input" type="radio" name="catRadios" id="catRadios2" value="css" required>
                     <label class="form-check-label" for="catRadios2">CSS</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="catRadios" id="catRadios3" value="3">
+                    <input class="form-check-input" type="radio" name="catRadios" id="catRadios3" value="js" required>
                     <label class="form-check-label" for="catRadios3">Javascript</label>
                   </div>
+                  <div class="invalid-feedback">Example invalid form file feedback</div>
+
                 </div>
 
                 </div>
@@ -126,18 +134,19 @@
  
 
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="labelCheckbox" id="labelCheckbox1" value="1">
+                    <input class="form-check-input" type="radio" name="labelCheckbox" id="labelCheckbox1" value="1" required>
                     <label class="form-check-label" for="labelCheckbox1">Beginner</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="labelCheckbox" id="labelCheckbox2" value="2">
+                    <input class="form-check-input" type="radio" name="labelCheckbox" id="labelCheckbox2" value="2" required>
                     <label class="form-check-label" for="labelCheckbox2">Intermediate</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="labelCheckbox" id="labelCheckbox3" value="3">
+                    <input class="form-check-input" type="radio" name="labelCheckbox" id="labelCheckbox3" value="3" required>
                     <label class="form-check-label" for="labelCheckbox3">Expert</label>
                   </div>
 
+                  <div class="invalid-feedback">Example invalid form file feedback</div>
 
                 </div>
 
@@ -146,7 +155,7 @@
               
                 
                
-
+                <input type="hidden" name="itemId" value="">
                 <div class="col-12">
                   <button type="submit" class="btn btn-primary">Save</button>
                    
